@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.a.HttpClient", "01.a.Htt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.b.TcpChatServer", "03.b.TcpChatServer\03.b.TcpChatServer.csproj", "{B79376CB-388A-494C-BA01-BA10437EB75A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.c.TcpChatMessenger", "03.c.TcpChatMessenger\03.c.TcpChatMessenger.csproj", "{8FBD16A1-4CBE-444D-827A-1A64B9A81A34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.d.TcpChatViewer", "03.d.TcpChatViewer\03.d.TcpChatViewer.csproj", "{C8D8061B-50A7-41C6-AA7C-875E344AD16A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{B79376CB-388A-494C-BA01-BA10437EB75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B79376CB-388A-494C-BA01-BA10437EB75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B79376CB-388A-494C-BA01-BA10437EB75A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FBD16A1-4CBE-444D-827A-1A64B9A81A34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FBD16A1-4CBE-444D-827A-1A64B9A81A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FBD16A1-4CBE-444D-827A-1A64B9A81A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FBD16A1-4CBE-444D-827A-1A64B9A81A34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D8061B-50A7-41C6-AA7C-875E344AD16A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D8061B-50A7-41C6-AA7C-875E344AD16A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D8061B-50A7-41C6-AA7C-875E344AD16A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D8061B-50A7-41C6-AA7C-875E344AD16A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
