@@ -53,7 +53,7 @@ namespace TcpChatMessenger
                 _msgStream.Write(msBuffer, 0, msBuffer.Length); // Blocks
 
                 // 如果我们在发送名字之后仍然连接，说明服务器接受了我们
-                if (IsDisConnected(_client))
+                if (!IsDisConnected(_client))
                     Running = true;
                 else
                 {

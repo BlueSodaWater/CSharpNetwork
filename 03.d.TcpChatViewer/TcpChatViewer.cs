@@ -50,7 +50,7 @@ namespace TcpChatViewer
                 _msgStream.Write(msBuffer, 0, msBuffer.Length); // Blocks
 
                 // 检测我们是否仍然连接中，如果服务器没有把我们踢下线，我们就继续
-                if (IsDisConnected(_client))
+                if (!IsDisConnected(_client))
                 {
                     Running = true;
                     Console.WriteLine("Press Ctrl-C to exit the Viewer at any time.");
@@ -145,7 +145,8 @@ namespace TcpChatViewer
             try
             {
                 Socket s = client.Client;
-                return s.Poll(10 * 1000, SelectMode.SelectRead) && (s.Available == 0);
+                var ans = s.Poll(10 * 1000, SelectMode.SelectRead) && (s.Available == 0);
+                return ans;
             }
             catch (SocketException se)
             {

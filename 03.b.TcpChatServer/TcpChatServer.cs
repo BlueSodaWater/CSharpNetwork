@@ -76,7 +76,7 @@ namespace TcpChatServer
                 Thread.Sleep(10);
             }
 
-            // 停止服务器，清楚所以已经连接的客户端
+            // 停止服务器，清除所有已经连接的客户端
             foreach (TcpClient v in _viewers)
                 CleanUpClient(v);
             foreach (TcpClient m in _messengers)
