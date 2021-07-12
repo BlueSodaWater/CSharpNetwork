@@ -34,7 +34,7 @@ namespace TcpGames
         {
             // 设置一些基础数据
             Name = name;
-            port = port;
+            Port = port;
             Running = false;
 
             // 创建监听器
