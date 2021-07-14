@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.b.TcpGamesServer", "04.b
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.e.TcpGamesClient", "04.e.TcpGamesClient\04.e.TcpGamesClient.csproj", "{04A9E79A-B75C-44C7-8376-9204CC8F704B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.Compression", "05.Compression\05.Compression.csproj", "{04563B5E-A047-493F-B0FE-0754F202EEC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{04A9E79A-B75C-44C7-8376-9204CC8F704B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04A9E79A-B75C-44C7-8376-9204CC8F704B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04A9E79A-B75C-44C7-8376-9204CC8F704B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04563B5E-A047-493F-B0FE-0754F202EEC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04563B5E-A047-493F-B0FE-0754F202EEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04563B5E-A047-493F-B0FE-0754F202EEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04563B5E-A047-493F-B0FE-0754F202EEC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
