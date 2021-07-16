@@ -12,7 +12,7 @@ namespace UdpFileTransfer
     {
         public static readonly int MD5ChecksumByteSize = 16;
 
-        enum ReceiveState
+        enum ReceiverState
         {
             NotRunning,
             RequestingFile,
@@ -60,7 +60,7 @@ namespace UdpFileTransfer
         {
             // 初始化获取文件状态
             Console.WriteLine("Requesting file: {0}", filename);
-            ReceiveState state = ReceiveState.RequestingFile;
+            ReceiverState state = ReceiverState.RequestingFile;
             byte[] checksum = null;
             UInt32 fileSize = 0;
             UInt32 numBlocks = 0;
@@ -70,7 +70,7 @@ namespace UdpFileTransfer
             // 重置发送状态的帮助函数
             Action ResetTransferState = new Action(() =>
             {
-                state = ReceiveState.RequestingFile;
+                state = ReceiverState.RequestingFile;
                 checksum = null;
                 fileSize = 0;
                 numBlocks = 0;
@@ -98,7 +98,7 @@ namespace UdpFileTransfer
                 // 状态
                 switch (state)
                 {
-                    case ReceiveState.RequestingFile:
+                    case ReceiverState.RequestingFile:
                         // 创建REQF
                         RequestFilePacket REQF = new RequestFilePacket();
                         REQF.Filename = filename;
@@ -108,10 +108,10 @@ namespace UdpFileTransfer
                         _client.Send(buffer, buffer.Length);
 
                         // 将状态改为等待ACK
-                        state = ReceiveState.WaitingForRequestFileACK;
+                        state = ReceiverState.WaitingForRequestFileACK;
                         break;
 
-                    case ReceiveState.WaitingForRequestFileACK:
+                    case ReceiverState.WaitingForRequestFileACK:
                         // 如果获取了ACK并且负载时文件名，说明我们运行正常
                         bool isACK = (nm == null) ? false : (nm.Packet.IsAck);
                         if (isACK)
@@ -122,7 +122,7 @@ namespace UdpFileTransfer
                             if (ACK.Message == filename)
                             {
                                 // 得到了之后，转换状态
-                                state = ReceiveState.WaitingForInfo;
+                                state = ReceiverState.WaitingForInfo;
                                 Console.WriteLine("They have the file, waiting for INFO...");
                             }
                             else
@@ -130,7 +130,7 @@ namespace UdpFileTransfer
                         }
                         break;
 
-                    case ReceiveState.WaitingForInfo:
+                    case ReceiverState.WaitingForInfo:
                         // 确认文件信息
                         bool isInfo = (nm == null) ? false : (nm.Packet.IsInfo);
                         if (isInfo)
@@ -153,11 +153,11 @@ namespace UdpFileTransfer
                             _client.Send(buffer, buffer.Length);
 
                             // 将状态转为为准备好
-                            state = ReceiveState.PreparingForTransfer;
+                            state = ReceiverState.PreparingForTransfer;
                         }
                         break;
 
-                    case ReceiveState.PreparingForTransfer:
+                    case ReceiverState.PreparingForTransfer:
                         // 准备请求队列
                         for (UInt32 id = 1; id <= numBlocks; id++)
                             _blockRequestQueue.Enqueue(id);
@@ -166,10 +166,10 @@ namespace UdpFileTransfer
                         // 转换状态
                         Console.WriteLine("Starting Transfer...");
                         transferTimer.Start();
-                        state = ReceiveState.Transfering;
+                        state = ReceiverState.Transfering;
                         break;
 
-                    case ReceiveState.Transfering:
+                    case ReceiverState.Transfering:
                         // 发送块请求
                         if (_blockRequestQueue.Count > 0)
                         {
@@ -215,7 +215,7 @@ namespace UdpFileTransfer
                         // 我们是否获取了我们所需要的所有块？如果是的话状态改为传输成功
                         break;
 
-                    case ReceiveState.TransferSuccessful:
+                    case ReceiverState.TransferSuccessful:
                         transferTimer.Stop();
 
                         // 一切运行正常，发送BYE消息
