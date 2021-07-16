@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography;
@@ -213,6 +216,8 @@ namespace UdpFileTransfer
                         }
 
                         // 我们是否获取了我们所需要的所有块？如果是的话状态改为传输成功
+                        if (_blocksReceived.Count == numBlocks)
+                            state = ReceiverState.TransferSuccessful;
                         break;
 
                     case ReceiverState.TransferSuccessful:
@@ -307,6 +312,34 @@ namespace UdpFileTransfer
                 byte[] compressedBytes = new byte[compressedByteSize];
 
                 // 将其整合到一个大块中
+                int cursor = 0;
+                for (UInt32 id = 1; id <= _blocksReceived.Keys.Count; id++)
+                {
+                    Block block = _blocksReceived[id];
+                    block.Data.CopyTo(compressedBytes, cursor);
+                    cursor += Convert.ToInt32(block.Data.Length);
+                }
+
+                // 现在将其保存下来
+                using (MemoryStream uncompressedStream = new MemoryStream())
+                using (MemoryStream compressedStream = new MemoryStream(compressedBytes))
+                using (DeflateStream deflateStream = new DeflateStream(compressedStream, CompressionMode.Decompress))
+                {
+                    deflateStream.CopyTo(uncompressedStream);
+
+                    // 确认校验和
+                    uncompressedStream.Position = 0;
+                    byte[] checksum = _hasher.ComputeHash(uncompressedStream);
+                    if (!Enumerable.SequenceEqual(networkChecksum, checksum))
+                        throw new Exception("Checksum of uncompressed blocks doesn't match that of INFO packet.");
+
+                    // 将其写入文件
+                    uncompressedStream.Position = 0;
+                    using (FileStream fileStream = new FileStream(filename, FileMode.Create))
+                        uncompressedStream.CopyTo(fileStream);
+                }
+
+                good = true;
             }
             catch (Exception e)
             {
