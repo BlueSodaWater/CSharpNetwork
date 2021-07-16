@@ -313,5 +313,30 @@ namespace UdpFileTransfer
 
             return good;
         }
+
+
+        public static UdpFileSender fileSender;
+
+        public static void InterruptHandler(object sender, ConsoleCancelEventArgs args)
+        {
+            args.Cancel = true;
+            fileSender?.ShutDown();
+        }
+
+        public static void Main(string[] args)
+        {
+            // 设置发送端
+            string filesDirectpry = "Files";//args[0].Trim();
+            int port = 6000;//int.Parse(args[1].Trim());
+            fileSender = new UdpFileSender(filesDirectpry, port);
+
+            // 增加Ctrl-C控制器
+            Console.CancelKeyPress += InterruptHandler;
+
+            // 运行
+            fileSender.Init();
+            fileSender.Run();
+            fileSender.Close();
+        }
     }
 }
