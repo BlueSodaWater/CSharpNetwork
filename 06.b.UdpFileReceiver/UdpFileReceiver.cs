@@ -80,7 +80,7 @@ namespace UdpFileTransfer
                 totalRequestedBlocks = 0;
                 _blockRequestQueue.Clear();
                 _blocksReceived.Clear();
-                transferTimer.Restart();
+                transferTimer.Reset();
             });
 
             // 主循环

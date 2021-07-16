@@ -15,7 +15,7 @@ namespace UdpFileTransfer
         // 使用提供的数字创建一个新的数据块
         public Block(UInt32 number = 0)
         {
-            Number = Number;
+            Number = number;
         }
 
         // 从字节数组创建一个块

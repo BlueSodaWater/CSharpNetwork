@@ -46,7 +46,7 @@ namespace UdpFileTransfer
         {
             FilesDirectory = filesDirectory;
             Port = port;
-            _client = new UdpClient(Port, AddressFamily.InterNetwork);  // 绑定IPv4
+            _client = new UdpClient(Port, AddressFamily.InterNetworkV6);  // 绑定IPv6
             _hasher = MD5.Create();
         }
 
@@ -163,6 +163,7 @@ namespace UdpFileTransfer
 
                             // 发送它
                             byte[] buffer = INFO.GetBytes();
+                            _client.Send(buffer, buffer.Length, receiver);
 
                             // 切换状态
                             Console.WriteLine("Sending INFO, waiting for ACK...");
@@ -326,9 +327,9 @@ namespace UdpFileTransfer
         public static void Main(string[] args)
         {
             // 设置发送端
-            string filesDirectpry = "Files";//args[0].Trim();
+            string filesDirectory = "Files";//args[0].Trim();
             int port = 6000;//int.Parse(args[1].Trim());
-            fileSender = new UdpFileSender(filesDirectpry, port);
+            fileSender = new UdpFileSender(filesDirectory, port);
 
             // 增加Ctrl-C控制器
             Console.CancelKeyPress += InterruptHandler;
