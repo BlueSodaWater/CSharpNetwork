@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>_07.g.UdpPongClient</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.1.189" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\07.e.UdpPongServer\07.e.UdpPongServer.csproj" />
+  </ItemGroup>
+
+</Project>
