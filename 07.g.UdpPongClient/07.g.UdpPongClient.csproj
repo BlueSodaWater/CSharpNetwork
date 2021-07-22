@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.1.189" />
+    <ProjectReference Include="..\07.e.UdpPongServer\07.e.UdpPongServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\07.e.UdpPongServer\07.e.UdpPongServer.csproj" />
+    <Folder Include="Content\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
   </ItemGroup>
 
 </Project>
