@@ -76,7 +76,7 @@ namespace PongGame
 
         public void LoadContent(ContentManager content)
         {
-            _sprite = content.Load<Texture2D>("paddle.png");
+            _sprite = content.Load<Texture2D>("paddle");
         }
 
         // 将板放在他可以移动的地方
@@ -121,7 +121,7 @@ namespace PongGame
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_sprite, Position);
+            spriteBatch.Draw(_sprite, Position, Color.White);
         }
 
         // 检测板的哪一部分和球碰撞了（如果有的话）

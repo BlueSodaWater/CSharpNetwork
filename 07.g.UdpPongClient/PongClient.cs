@@ -103,13 +103,11 @@ namespace PongGame
             _right.LoadContent(Content);
 
             // 加载消息
-            _establishingConnectionMsg = Content.Load<Texture2D>("establishing-connection-msg.png");
-            _waitingForGameStartMsg = Content.Load<Texture2D>("waiting-for-game-start-msg.png");
-            _gameOverMsg = Content.Load<Texture2D>("game-over-msg.png");
+            _establishingConnectionMsg = Content.Load<Texture2D>("establishing-connection-msg");
+            _waitingForGameStartMsg = Content.Load<Texture2D>("waiting-for-game-start-msg");
+            _gameOverMsg = Content.Load<Texture2D>("game-over-msg");
 
             // 记载音效
-            _ballHitSFX = Content.Load<SoundEffect>("ball-hit.wav");
-            _scoreSFX = Content.Load<SoundEffect>("score.wav");
         }
 
         protected override void UnloadContent()
@@ -316,7 +314,7 @@ namespace PongGame
         private void DrawCentered(Texture2D texture)
         {
             Vector2 textureCenter = new Vector2(texture.Width / 2, texture.Height / 2);
-            _spriteBatch.Draw(texture, GameGeometry.ScreenCenter, null, null, textureCenter);
+            _spriteBatch.Draw(texture, GameGeometry.ScreenCenter, Color.White);
         }
 
         private void UpdateWindowTitleWithScore()

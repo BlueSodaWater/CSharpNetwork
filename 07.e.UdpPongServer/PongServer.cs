@@ -156,7 +156,7 @@ namespace PongGame
         // 从UdpClient中读/写数据
         private void NetworkRun()
         {
-            if (_running.Value)
+            if (!_running.Value)
                 return;
 
             Console.WriteLine("[Server] Waiting for UDP datagrams on port {0}", Port);

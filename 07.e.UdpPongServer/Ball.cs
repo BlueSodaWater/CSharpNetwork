@@ -35,7 +35,7 @@ namespace PongGame
 
         public void LoadContent(ContentManager content)
         {
-            _sprite = content.Load<Texture2D>("ball.png");
+            _sprite = content.Load<Texture2D>("ball");
         }
 
         // 将球的位置重置到屏幕中心
@@ -74,7 +74,7 @@ namespace PongGame
         // 在屏幕上画球，只有客户端调用
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_sprite, Position);
+            spriteBatch.Draw(_sprite, Position, Color.White);
         }
     }
 }

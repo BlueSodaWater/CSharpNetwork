@@ -319,7 +319,7 @@ namespace PongGame
                 switch (message.Packet.Type)
                 {
                     case PacketType.RequestJoin:
-                        Console.WriteLine("[{0.000}] Join Request from {1}", Id, player.EndPoint);
+                        Console.WriteLine($"{Id} Join Request from {1}", player.EndPoint);
                         SendAcceptJoin(player);
                         break;
 
@@ -404,7 +404,7 @@ namespace PongGame
             if ((ballY <= _ball.TopmostY) || (ballY >= _ball.BottommostY))
             {
                 _ball.Speed.Y *= -1;
-                PlaySoundEffect("ball-hit");
+                // PlaySoundEffect("ball-hit");
             }
 
             // 球碰到了左右边（得分）
@@ -413,19 +413,19 @@ namespace PongGame
             {
                 // 右边玩家得分（重置球）
                 RightPlayer.Paddle.Score += 1;
-                Console.WriteLine("[{0.000}] Right Player scored ({1} -- {2}) at {3}",
-                    Id, LeftPlayer.Paddle.Score, RightPlayer.Paddle.Score, _gameTimer.Elapsed);
+                Console.WriteLine($"{Id} Right Player scored ({1} -- {2}) at {3}",
+                    LeftPlayer.Paddle.Score, RightPlayer.Paddle.Score, _gameTimer.Elapsed);
                 _ball.Initialize();
-                PlaySoundEffect("score");
+                // PlaySoundEffect("score");
             }
             else if (ballX >= _ball.RightmostX)
             {
                 // 左边玩家得分（重置球）
                 LeftPlayer.Paddle.Score += 1;
-                Console.WriteLine("[{0.000}] Right Player scored ({1} -- {2}) at {3}",
-                    Id, LeftPlayer.Paddle.Score, RightPlayer.Paddle.Score, _gameTimer.Elapsed);
+                Console.WriteLine($"{Id} Right Player scored ({1} -- {2}) at {3}",
+                    LeftPlayer.Paddle.Score, RightPlayer.Paddle.Score, _gameTimer.Elapsed);
                 _ball.Initialize();
-                PlaySoundEffect("score");
+                // PlaySoundEffect("score");
             }
 
             // 球撞击到板上
