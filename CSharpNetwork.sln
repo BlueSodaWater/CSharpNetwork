@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.a.UdpFileSender", "06.a.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.b.UdpFileReceiver", "06.b.UdpFileReceiver\06.b.UdpFileReceiver.csproj", "{6A1038FB-9311-4D25-9CBD-055260D46C16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.e.UdpPongServer", "07.e.UdpPongServer\07.e.UdpPongServer.csproj", "{43DE2D3D-31E5-4F3E-B140-5AF7418522D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.e.UdpPongServer", "07.e.UdpPongServer\07.e.UdpPongServer.csproj", "{43DE2D3D-31E5-4F3E-B140-5AF7418522D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.g.UdpPongClient", "07.g.UdpPongClient\07.g.UdpPongClient.csproj", "{F9B76F35-E4CD-44F9-9010-0DA28783A3DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.g.UdpPongClient", "07.g.UdpPongClient\07.g.UdpPongClient.csproj", "{F9B76F35-E4CD-44F9-9010-0DA28783A3DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.Ping", "08.Ping\08.Ping.csproj", "{6DBE7259-DDA9-481A-A299-7A05F19EC8F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{F9B76F35-E4CD-44F9-9010-0DA28783A3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9B76F35-E4CD-44F9-9010-0DA28783A3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9B76F35-E4CD-44F9-9010-0DA28783A3DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBE7259-DDA9-481A-A299-7A05F19EC8F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBE7259-DDA9-481A-A299-7A05F19EC8F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBE7259-DDA9-481A-A299-7A05F19EC8F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBE7259-DDA9-481A-A299-7A05F19EC8F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
